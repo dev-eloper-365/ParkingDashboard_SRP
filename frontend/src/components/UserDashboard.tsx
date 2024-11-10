@@ -41,9 +41,9 @@ interface OccupancyState {
 
 export default function UserDashboard() {
   const [parkingData, setParkingData] = useState<ParkingData[]>([]);
-  const [occupancyData, setOccupancyData] = useState<OccupancyData[]>([]);
+  const [_occupancyData, setOccupancyData] = useState<OccupancyData[]>([]);
   const [date, setDate] = useState<Date>(new Date());
-  const [todayOccupancy, setTodayOccupancy] = useState<OccupancyState>({
+  const [_todayOccupancy, setTodayOccupancy] = useState<OccupancyState>({
     occupied: 0,
     vacant: 0,
   });

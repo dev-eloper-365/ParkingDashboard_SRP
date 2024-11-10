@@ -36,13 +36,13 @@ export default function ParkingDashboard() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredCars, setFilteredCars] = useState([]);
   const [date, setDate] = useState<Date | undefined>();
-  const [thisWeekOccupancy, setThisWeekOccupancy] = useState(0);
-  const [todayOccupancy, setTodayOccupancy] = useState({
+  const [_thisWeekOccupancy, setThisWeekOccupancy] = useState(0);
+  const [_todayOccupancy, setTodayOccupancy] = useState({
     occupied: 0,
     vacant: 0,
   });
 
-  const [parkingDurationData, setParkingDurationData] = useState([
+  const [parkingDurationData, _setParkingDurationData] = useState([
     { name: "10am", value: 20 },
     { name: "11am", value: 30 },
     { name: "12pm", value: 40 },
@@ -310,7 +310,7 @@ export default function ParkingDashboard() {
                   dataKey="value"
                   label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(1)}%`}
                 >
-                  {parkingDurationData.map((entry, index) => (
+                  {parkingDurationData.map((_entry, index) => (
                     <Cell
                       key={`cell-${index}`}
                       fill={COLORS[index % COLORS.length]}
