@@ -234,12 +234,12 @@ export default function ParkingDashboard() {
               <div className="flex justify-between items-center">
                 <div>
                   <span className="text-red-500 text-2xl font-bold">
-                    Occupied: 388
+                    Occupied: {todayOccupancy.occupied}
                   </span>
                 </div>
                 <div>
                   <span className="text-green-500 text-2xl font-bold">
-                    Vacant: 112
+                    Vacant: {todayOccupancy.vacant}
                   </span>
                 </div>
               </div>
@@ -247,7 +247,7 @@ export default function ParkingDashboard() {
                 <div
                   className="bg-red-500 h-2.5 rounded-full"
                   style={{
-                    width: `${(388 / 500) * 100}%`,
+                    width: `${(todayOccupancy.occupied / totalSpots) * 100}%`,
                   }}
                 ></div>
               </div>
@@ -260,7 +260,7 @@ export default function ParkingDashboard() {
                 <CardTitle className="text-sm">No of Cars in Campus</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-3xl font-bold">388</p>
+                <p className="text-3xl font-bold">{todayOccupancy.occupied}</p>
               </CardContent>
             </Card>
             <Card>
@@ -271,7 +271,7 @@ export default function ParkingDashboard() {
               </CardHeader>
               <CardContent>
                 <p className="text-3xl font-bold">
-                  246.2
+                  {thisWeekOccupancy.toFixed(1)}
                 </p>
               </CardContent>
             </Card>
@@ -291,7 +291,6 @@ export default function ParkingDashboard() {
               </ResponsiveContainer>
             </CardContent>
           </Card>
-
 
           <Card>
             <CardHeader>
