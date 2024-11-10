@@ -58,7 +58,7 @@ export default function UserDashboard() {
     async function fetchData() {
       try {
         const parkingResponse = await fetch(
-          "http://localhost:5000/api/parkingData"
+          "https://k3tk0g1s-5000.inc1.devtunnels.ms/"
         );
         const parkingData = await parkingResponse.json();
         setParkingData(parkingData);
