@@ -208,9 +208,9 @@ export default function ParkingDashboard() {
                     <TableCell colSpan={7}>Loading...</TableCell>
                   </TableRow>
                 ) : (
-                  filteredCars.map((car: any) => (
+                  filteredCars.map((car: any, index) => (
                     <TableRow key={car._id}>
-                      <TableCell>{car.no}</TableCell>
+                      <TableCell>{index + 1}</TableCell>
                       <TableCell>{car.type}</TableCell>
                       <TableCell>{car.noPlate}</TableCell>
                       <TableCell>{car.timeIn}</TableCell>
