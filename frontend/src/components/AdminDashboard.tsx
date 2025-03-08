@@ -36,20 +36,21 @@ export default function ParkingDashboard() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredCars, setFilteredCars] = useState([]);
   const [date, setDate] = useState<Date | undefined>();
-  const [_thisWeekOccupancy, setThisWeekOccupancy] = useState(0);
-  const [_todayOccupancy, setTodayOccupancy] = useState({
+  // Removed the underscores from variable names that are actually used
+  const [thisWeekOccupancy, setThisWeekOccupancy] = useState(0);
+  const [todayOccupancy, setTodayOccupancy] = useState({
     occupied: 0,
     vacant: 0,
   });
 
-  const [parkingDurationData, _setParkingDurationData] = useState([
+  // Removed the underscore from setParkingDurationData since it's used in the component
+  const [parkingDurationData, setParkingDurationData] = useState([
     { name: " 10 AM", value: 20 },
     { name: " 11 AM", value: 35 },
     { name: " 12 PM", value: 25 },
     { name: " 1 PM", value: 40 },
     { name: " 2 PM", value: 30 },
   ]);
-  
   
   const totalSpots = 500;
 
@@ -233,12 +234,12 @@ export default function ParkingDashboard() {
               <div className="flex justify-between items-center">
                 <div>
                   <span className="text-red-500 text-2xl font-bold">
-                    Occupied: 388
+                    Occupied: {todayOccupancy.occupied}
                   </span>
                 </div>
                 <div>
                   <span className="text-green-500 text-2xl font-bold">
-                    Vacant: 112
+                    Vacant: {todayOccupancy.vacant}
                   </span>
                 </div>
               </div>
@@ -246,7 +247,7 @@ export default function ParkingDashboard() {
                 <div
                   className="bg-red-500 h-2.5 rounded-full"
                   style={{
-                    width: `${(388 / 500) * 100}%`,
+                    width: `${(todayOccupancy.occupied / totalSpots) * 100}%`,
                   }}
                 ></div>
               </div>
@@ -259,7 +260,7 @@ export default function ParkingDashboard() {
                 <CardTitle className="text-sm">No of Cars in Campus</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-3xl font-bold">388</p>
+                <p className="text-3xl font-bold">{todayOccupancy.occupied}</p>
               </CardContent>
             </Card>
             <Card>
@@ -270,7 +271,7 @@ export default function ParkingDashboard() {
               </CardHeader>
               <CardContent>
                 <p className="text-3xl font-bold">
-                  246.2
+                  {thisWeekOccupancy.toFixed(1)}
                 </p>
               </CardContent>
             </Card>
@@ -307,7 +308,7 @@ export default function ParkingDashboard() {
                     fill="#8884d8"
                     dataKey="value"
                   >
-                    {parkingDurationData.map((_entry, index) => (
+                    {parkingDurationData.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                     ))}
                   </Pie>
